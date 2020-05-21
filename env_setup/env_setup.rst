@@ -1,78 +1,84 @@
 .. _env_setup:
 
 ----------------------
-API: Environment Setup
+API: 演習環境の準備
 ----------------------
 
-Overview
+概要
 ++++++++
 
-It’s time to look at how API requests can be tested. As with most topics in development, there are many ways to do this. For our setup lab, we will concentrate on what is probably the most popular tool for API testing - Postman. We will setup Postman client on your Windows Tools VM.
+ここではどのようにAPIのリクエストをテストするのかについて扱います。
+他の開発系トピックにも共通することですが、実現手法はいくつかあります。
+このラボではおそらくAPIのテスト手法で最も一般的なツールである「Postman」を利用します。
+まず最初にクラスタに用意されているツールとして使う Windows VM にPostmanを準備します。
 
 .. note::
 
-  Estimated time to complete: **5-20 MINUTES**
+  想定される所要時間: **5-20 MINUTES**
 
-Lab Setup
+ラボ準備
 +++++++++
 
-This lab requires applications provisioned as part of the :ref:`windows_tools_vm`.
+このラボでは :ref:`windows_tools_vm` に用意されているツール群を利用します。
 
-If you have not yet deployed this VM, see the linked steps before proceeding with the lab.
+もしこのVMがまだ展開されていなければ、次に進む前に上記リンクを参照してください。
 
-Postman Environment Setup
+Postmanを使う環境の準備
 +++++++++++++++++++++++++
 
-First Run Postman
+Postmanの起動
 .................
 
-Please now start Postman for the first time. If this is the first time you have started Postman, you’ll be presented with a screen suggesting you create a Postman account. While this is not mandatory for the Nutanix Developer Marketing labs or even for Postman use in general, it can be a useful addition for using Postman on multiple machines.
+それではPostmanを起動してください。
+もし受講者のかたがPostmanを利用したことがなければ、以下のような画面でPostmanのアカウントの作成が促されます。
+アカウントの作成はNutanixの演習の実行やPostmanの日々の利用において必須ではありませんが、もしPostmanを複数のマシンで利用するのであれば登録しておくと便利かもしれません。
 
-#. If you already have a Postman account, please feel free to sign in using the **Sign In** link provided.
+#. もしあなたがすでにPostmanのアカウントを持っているのであれば、 **Sign In** リンクからログインしていただいて構いません。
 
-#. If you prefer to skip signing up and want to use Postman without an account, please click the **Skip signing up and take me straight to the app** link.
+#. もしあなたがアカウント作成やログインを望まないのであれば、 **Skip signing up and take me straight to the app** リンクを押して進めてください.
 
    .. figure:: images/postman_setup_001.png
 
    .. note::
 
-     The screenshot actions shown through this lab section will function the same way, logged in or not. Also, the screenshots shown were taken with Postman set to the ‘Dark’ theme. The theme can be changed by clicking the settings “spanner” icon and choosing dark from the Themes tab.
+     このラボで提示されるスクリーンショットはログインの有無に依存していません。また、表示されているスクリーンショットはPostmanのダークモードで撮影されています。テーマの設定はスパナのアイコンの設定ボタンからテーマタブでダークモードを選ぶことで変更できます。
 
-Using Postman
+Postmanを使う
 .............
 
-#. Although we could create an API request immediately, this lab is aimed at getting ready for upcoming labs and articles. For now, take note of the highlighted **Request** link, but please don’t click it, yet.
+#. すぐにでもAPIのリクエストを実施できますが、このラボでは今後のラボを円滑に実施することを目的にPostmanを利用します。
+なお、ハイライトされている **Request** リンクはまだクリックしないでください。
 
-#. Instead, click the **X** button to close the currently open window.
+#. **X** ボタンを押して現在開いているウィンドウを閉じてください。
 
-#. The screenshot below highlights key areas that we’ll use in upcoming labs. These are the most important areas to be familiar with, although Postman has an enormous amount of functionality outside of “just” API requests.
+#. 以下のスクリーンショットでは今後のラボで利用する主要な箇所をハイライトしています。これらはPostmanを習熟するうえにおいて最も重要な箇所です。これら以外にもPostmanは単なるAPIのリクエストを投げる以外の様々な機能を持っています。 
 
-   .. figure:: image/postman_001.png
+   .. figure:: images/postman_001.png
 
-#. From 1 to 8, the highlighted sections are as follows.
+#. 1 から 8 までのハイライトされている場所はそれぞれ以下のような役割を持っています。
 
-    - Each tab is contained within a request tab. This makes it easy to organise each request and its properties for later use.
-    - The + button is how we’ll create new requests. The … ellipsis button can be used duplicate the current tab, re-open recently closed tabs (and more).
-    - Showing **GET** right now, this is where we can change the request type. For example, common requests types are GET, POST, PUT and DELETE.
-    - The URL for the request. For example, Nutanix REST API requests typically start with something like this: **https://<ip_address_or_fqdn>:9440/api/nutanix/<api_version_or_name>/<entity>**
-    - The **Authorization** tab is where we can enter the username and password for our requests. When working with the Nutanix RESTS APIs, all requests are sent with **Basic Authentication** i.e. a username and password combination.
-    - The **Body** is where we can setup request “payload”. A request payload will typically contain parameters or additional information that a specific API request requires. An example could be the same of the new VM you are creating via API.
-    - The **Send** button does exactly what the name suggests. It takes all previously-configured settings and sends the request to the desired IP address or DNS name.
-    - Lastly, the large response field is where the JSON-formatted API response will be shown. Using the response field, we can see if the response was successful, if it failed, **why** it failed or, if everything went well, what the response itself contains.
+    - それぞれのタブは別々のリクエストの設定を保持します。これは複数のリクエスト設定を管理し、「リクエストAの次にB、その次にA」などとする際に毎回設定をしなおす手間を省いてくれます
+    - 「+」ボタンは新しいリクエストの設定を作ります。「...」というボタンは設定タブをコピーしたり、最近閉じたタブを再度開く場合に利用します。
+    - 現在は **GET** が表示されています。これはリクエストの種類を変更する際に利用します。たとえば、一般的なリクエストの種類はGET, POST, PUT と DELETE です。
+    - リクエストのURLです。たとえばNutanixのREST APIのリクエストは通常は以下のようなものから始まります: **https://<ip_address_or_fqdn>:9440/api/nutanix/<api_version_or_name>/<entity>**
+    - **Authorization** タブはリクエストにたいしてユーザー名とパスワードを設定するために使われます。Nutanix の REST API を利用する場合、すべてのリクエストは **ベーシック認証** が必要です。これはユーザー名とパスワードのペアです。
+    - **Body** はリクエストのペイロードを設定するための場所です。 リクエストのペイロードは一般的にAPIのリクエストに必要なパラメーターや追加情報を格納しています。これは受講者のかたがAPIを使って仮想マシンを作成する際にもわかります。
+    - **Send** ボタンはその名が示すとおりのことをします。利用者が設定した様々な情報を含むリクエストを指定されたIPやDNS名にたいして送信します。 
+    - 最後のレスポンス表示エリアは整形されたJSONが表示される場所です。レスポンスエリアを見ることで、成功したレスポンスが得られているか、もし失敗した場合はなぜ失敗したかといった情報が得られます。
 
-#. With our new request created, we can submit the request and start parsing the response. Click **Send** now!
+#. (訳注:これ以後は続く演習で実施してください)。全ての準備が整ったら、リクエストを送信してレスポンスを確認することができます。 **Send** ボタンをクリックしてください。
 
    .. note::
 
-     If you receive an error saying **Could not get any response**, it is likely Postman is configured to require SSL certification verification (the default setting). To fix this:
+     もし **Could not get any response** というようなレスポンスを受け取ったのであれば、おそらくPostmanにたいしてSSL証明書の承認設定を変更する必要があります。以下のように設定してください:
 
-        - Click the Postman settings icon (spanner icon near the top-right corner).
-        - Select **Settings**.
+        - Postman の設定アイコン(ウィンドウ右上のスパナマーク)をクリックする.
+        - **Settings** を選択する
 
-        .. image::  imagae/postman_ssl_001.png
+        .. image::  images/postman_ssl_001.png
 
-        - Toggle **off** the setting labelled **SSL certification verification**.
+        -  **SSL certification verification** のチェックマークを外す
 
-        .. image::  imagae/postman_ssl_002.png
+        .. image::  images/postman_ssl_002.png
 
-        - Click the dialog’s **X** button to close.
+        - ダイアログを **X** ボタンを押して閉じる
