@@ -1,55 +1,55 @@
 .. _api_cluster_list:
 
 ----------------------
-API: List of Clusters
+API: クラスターの一覧
 ----------------------
 
-Overview
+概要
 ++++++++
 
-In this exercise you will list the clusters connected to Prism Central.  Later exercises
-will require the cluster uuid in the JSON body.
+この演習では Prism Central に接続さているクラスタ一覧を取得します。
+後ほどおこなう演習では得られたJSONレスポンスに含まれるクラスタのUUIDが必要となります。
 
 .. note::
 
-  Estimated time to complete: **5 MINUTES**
+  想定時間: **5 MINUTES**
 
 
 
-Exercise: List the clusters
+Exercise: クラスター一覧の取得
 +++++++++++++++++++++++++++++++++++++++++++
 
-#. Click + in the main window to create a new tab-window
+#. Postmanでメイン画面にある「+」をクリックして新しいタブを作成します
 
-#. Click the dropdown and select POST
+#. HTTPメソッドのドロップダウンをクリックしてPOSTを選択します
 
-    - v3 standardizes on POST for listing to offer server-side filtering, grouping, and sorting
+    - Nutanix v3 API では POST を使ってサーバーサイドでのフィルタリング、グルーピング、ソートが標準化されています
 
-#. Enter the URL to list clusters
+#. クラスターをリスト表示するためのURLを入力してください
 
     - https://{{prism_central_ip}}:9440/api/nutanix/v3/clusters/list
 
-#. Configure basic authentication for this API call
+#. API呼び出しのためのベーシック認証の設定をしてください
 
-        - Click the **Authorization** tab and select **Basic Auth** from the Type dropdown
-        - Enter Prism credentials of the cluster, and click **Update Request**:
+        - **Authorization** タブをクリックし、 **Basic Auth** をTypeのドロップダウンから選択してください。
+        - クラスターのクレデンシャル情報を入力し, **Update Request** をクリックしてください。
             - **Username** - admin
-            - **Password** - Use the “Prism login password” from handout
+            - **Password** - 講師から与えられた“Prism login password”を使ってください
 
         .. figure:: images/basicauth.png
 
-#. Set the media type to application/json
+#. メディアタイプを「application/json」にします
 
-        - Click the Body tab
-        - Select the radio button for raw
-        - Click the Text dropdown and select JSON (application/json)
+        - Bodyタブをクリック
+        - ラジオボタン(選択ボタン)でrawを選択します
+        - Textのドロップダウンをクリックし、JSON(application/json)を選択します
 
         .. figure:: images/jsonmediatype.png
 
-#. Fill out the body
+#. Bodyにリクエストペイロードの値を書きます
 
-    - Click the Body tab
-    - Copy or type an empty dictionary in the json body as seen below
+    - Bodyタブをクリック
+    - コピーするか手打ちで空データをJSONで記載します。
 
     .. code-block:: bash
 
@@ -57,10 +57,10 @@ Exercise: List the clusters
 
     .. figure:: images/apimetajson.png
 
-#. Click Send to submit the v3 API call
+#. Sendボタンをクリックし、v3 APIのリクエストをサーバーに投げます
 
-    - The intent response provides an array of cluster resources
-    - Take note of the cluster UUID under the metadata
+    - 期待されるレスポンスではアレイ(リスト)けいs気でクラスターの一覧を表示します
+    - metadataの下に定義されているクラスターUUIDをメモしておいてください
 
   .. figure:: images/clusteruuid.png
 
@@ -68,6 +68,8 @@ Exercise: List the clusters
 
 
 
-Takeaways
+まとめ
 +++++++++
-In this exercise you peformed a simple cluster list API call.  You will need a cluster UUID for all v3 API fucntions.  You also configured your cluster authentication which will be the same in the remaing exercises/
+この演習ではクラスターをリスト表示するAPIの呼び出しをおこないました。
+全てのNutanix v3 APIの呼び出しではクラスターUUIDが必要となります。
+なお、ここで設定したクラスターの認証情報は同様に残りの演習でも利用します。
