@@ -38,10 +38,10 @@ API: VMの作成
 
 #. ベーシック認証の設定をしてください。
 
-    - Click the **Authorization** tab and select **Basic Auth** from the Type dropdown
-    - Enter Prism credentials of the cluster, and click **Update Request**:
+    - **Authorization** タブをクリックし **Basic Auth** をTypeのドロップダウンから選択します
+    - プリズムのクレデンシャルを入力し **Update Request** をクリックします:
         - **Username** - admin
-        - **Password** - Use the “Prism login password” from handout
+        - **Password** - 講師より伝えられたPrismのログインパスワード
 
     .. figure:: images/basicauth.png
 

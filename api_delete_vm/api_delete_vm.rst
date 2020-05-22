@@ -1,32 +1,32 @@
 .. _api_delete_vm:
 
 ----------------------
-API: Delete VM
+API: 仮想マシンの削除
 ----------------------
 
-Overview
+概要
 ++++++++
 
-In this exercise you will delete the VM you created in exercise 2.
+この演習では演習2で作成した仮想マシンを削除します。
 
 .. note::
 
-  Estimated time to complete: **5 MINUTES**
+  想定演習時間: **5 MINUTES**
 
-Exercise: Delete your VM
+演習: VMの削除
 ++++++++++++++++++++++++++++++
 
-#. Click + in the main window to create a new tab-window
+#. Postmanの「+」ボタンを押して新しいリクエストタブを作成してください
 
-#. Confirm that **Delete** is selected in the dropdown
+#. HTTPメソッドのドロップダウンで **Delete** を選択してください
 
-#. Enter the URL to for your VM Start with the URL from the previous exercise:
+#. 先程の演習で利用した以下のURLをURL欄に記入してください:
 
     - https://{{prism_central_ip}}:9440/api/nutanix/v3/vms
-    - Append /{{uuid}} to the URL, using the uuid from the metadata section noted in the VM creation response in exercise 2.
+    - 続けてURLに /{{uuid}} を追加します。このUUIDは演習2のmetadata項目で取得した仮想マシンのUUIDです
 
-#. Configure basic authentication for this API call
+#. ベーシック認証を設定します
 
-    - Follow the same steps from exercise 1
+    - 演習1の手順を繰り返してください
 
-#. Click Send to submit the delete API call
+#. Sendボタンを押して API リクエストを送信してください
