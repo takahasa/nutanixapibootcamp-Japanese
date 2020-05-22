@@ -12,7 +12,7 @@ API: VMの作成
 
 .. note::
 
-  予想演習時間: **20 MINUTES**
+  想定演習時間: **20 MINUTES**
 
 
 

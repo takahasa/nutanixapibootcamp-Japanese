@@ -1,10 +1,10 @@
 .. _api_vm_guest_customization:
 
 ----------------------
-API: VM Guest Customization
+API: ゲストVMのカスタマイズ
 ----------------------
 
-Overview
+概要
 ++++++++
 
 .. note::

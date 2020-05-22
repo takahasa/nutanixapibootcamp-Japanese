@@ -12,7 +12,7 @@ API: クラスターの一覧
 
 .. note::
 
-  想定時間: **5 MINUTES**
+  想定演習時間: **5 MINUTES**
 
 
 
@@ -63,8 +63,6 @@ Exercise: クラスター一覧の取得
     - metadataの下に定義されているクラスターUUIDをメモしておいてください
 
   .. figure:: images/clusteruuid.png
-
-
 
 
 

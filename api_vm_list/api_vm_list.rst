@@ -11,7 +11,7 @@ Overview
 
 .. note::
 
-  予想演習時間: **5 MINUTES**
+  想定演習時間: **5 MINUTES**
 
 
 
