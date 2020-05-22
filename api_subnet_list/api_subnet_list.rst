@@ -1,47 +1,47 @@
 .. _api_subnet_list:
 
 ----------------------
-API: List of Subnets
+API: サブネットの一覧を取得
 ----------------------
 
-Overview
+概要
 ++++++++
 
-In this exercise you will list the cluster subnets.  Later exercises
-will require the subnet uuid in the JSON body.
+この演習では受講者のかたにクラスターが持つサブネットの一覧を表示してもらいます。
+後ほどの演習ではここで取得するサブネットのUUIDが必要となります。
 
 .. note::
 
-  Estimated time to complete: **5 MINUTES**
+  想定演習時間: **5 MINUTES**
 
 
 
-Exercise: List the AHV subnets
+演習: AHVのサブネット一覧を取得
 +++++++++++++++++++++++++++++++++++++++++++
 
-#. Click + in the main window to create a new tab-window
+#. Postmanの「+」ボタンをクリックして新しいリクエストタブを作成してください
 
-#. Click the dropdown and select POST
+#. HTTPメソッドのドロップダウンをクリックしPOSTを選択してください
 
-    - v3 standardizes on POST for listing to offer server-side filtering, grouping, and sorting
+    - Nutanix API v3 はPOSTメソッドを使ってサーバーサイドでのフィルター、グルーピング、ソートをほどこした要素のリストを提供します 
 
-#. Enter the URL to list images
+#. サブネットの一覧を得るために以下のURLをクリックしてください
 
     - https://{{prism_central_ip}}:9440/api/nutanix/v3/subnets/list
 
-#. Configure basic authentication for this API call
+#. API呼び出しのためにベーシック認証の設定をしてください
 
-    - Follow the same steps from the first exercise
-    - v3 conforms to HTTP as a stateless protocol such that each API call is authenticated
+    - 最初の演習と同じステップで設定してください
+    - v3 APIはHTTPをステートレスなプロトコルとして扱うので、ベーシック認証はアクセスのたびにおこなわれます
 
-#. Set the media type to application/json
+#. メディアタイプをapplication/jsonにします
 
-    - Follow the same steps from the first exercise
+    - 最初の演習と同じ手順で設定してください
 
-#. Fill out the body
+#. ボディを設定します
 
-    - Click the Body tab
-    - Copy or type an empty dictionary in the json body as seen below
+    - Bodyタブをクリックしてください
+    - 以下をコピーするか入力して、ボディに空の辞書データを与えてください
 
     .. code-block:: bash
 
@@ -49,9 +49,9 @@ Exercise: List the AHV subnets
 
     .. figure:: images/apimetajson.png
 
-#. Click Send to submit the v3 API call
+#. Sendボタンを押して v3 API を呼び出してください
 
-  - The intent response provides an array of subnet resources
-  - Take note of the uuid for the **Primary** network in the metadata section
+  - レスポンスにクラスターが持つサブネットの一覧が含まれています
+  - metadata という項目にある **Primary** というネットワークのUUIDを取得してください
 
   .. figure:: images/subnetuuid.png

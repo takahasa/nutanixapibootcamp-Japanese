@@ -24,38 +24,38 @@ API: VMの更新
 
 #. HTTPメソッドで「PUT」を選択してください
 
-    - v3 uses PUT to allow the declaration of a spec that describes the new desired final state
+    - v3 API は PUT メソッドを使って変化させる「spec」の状態を宣言します。どのようにしたいかをspecに書いてください
 
-#. Enter the URL to update your VM
+#. VMを更新するために以下のURLを入力してください
 
-    - Copy the URL used in the third exercise: https://{{prism_central_ip}}:9440/api/nutanix/v3/vms/{{uuid}}
-    - Replace {{prism_central_ip}} with the IP address mentioned in the lab handout
+    - 3番目の演習で使った右のURLをコピーします: https://{{prism_central_ip}}:9440/api/nutanix/v3/vms/{{uuid}}
+    - {{prism_central_ip}} を正しい Prism Central のIPに置き換えます
 
     .. figure:: images/updatevm.png
 
-#. Configure basic authentication for this API call
+#. API呼び出しのためのベーシック認証の設定をします
 
-    - Follow the same steps from exercise 1
-    - v3 conforms to HTTP as a stateless protocol such that each API call is authenticated
+    - 演習1での操作と同じことを繰り返してください
+    - v3 APIはHTTPをステートレスなプロトコルとして扱いますので、毎回ベーシック認証がされます
 
-#. Set the media type to application/json
+#. メディアタイプをapplication/jsonにします
 
-    - Follow the same steps from **exercise 1**
+    - **演習1** と同じ設定をしてください
 
-#. Fill out the body
+#. ボディに以下をかきます
 
-    - Click on the tab from **exercise 3** where you retrieved the status of your VM
-    - Copy the entire response
-    - Click on the right-most tab for this exercise to update your VM
-    - Paste the response from the GET as the body for the PUT
-    - Only delete the status object from the body and keep the spec and metadata section.
+    - **演習3(VMの状態の取得)** のリクエストタブを開いてください
+    - レスポンスデータの全てをコピーしてください
+    - この演習のリクエストタブをクリックして設定に戻ってください
+    - HTTPメソッドをPUTにして、さきほど取得したレスポンスデータをボディとして貼り付けてください
+    - ボディから「status(keyとvalueの両方)」を削除し、specとmetadataはそのまま保持してください
 
     .. figure:: images/deletestatus.png
 
-#. Adjust the body to mount a disk and power on
+#. ボディを編集してディスクのマウントとパワーオンを追加します
 
-    - Change the power_state attribute from OFF to ON
-    - Search for "disk_list": [] and replace with the following disk list into the spec
+    - power_state要素をOFFからONに変えてください
+    - 「"disk_list": [] 」を探して、以下のように書き換えてください
 
     .. code-block:: bash
 
@@ -75,28 +75,28 @@ API: VMの更新
 
 
 
- - Replace <imageuuid> with the uuid of the CentOS image from **exercise 4**
+ - 上記の <imageuuid> を **演習4** で確認したCentOSイメージのUUIDに置き換えてください
 
     .. figure:: images/updatevmstate.png
 
-#. Click **Send** to submit the v3 API call
+#. Click **Send** ボタンを押してv3 APIを呼び出してください
 
-    - v3 intentful PUTs return a **202** on success to indicate that the intent was accepted
-    - While the response state is **PENDING**, the VM is being transformed to its final state
-    - With most APIs, powering on a VM and adding a disk is two calls. With v3, both operations (generally, any number of operations) can be accomplished with one **PUT**
-    - Because of this, v3 exposes dramatically fewer URLs, as all entity transformations can be requested intentfully by providing the entity spec via PUT on the URL for the entity
+    - v3 のPUT命令は **202** を設定受付の成功時に返します。
+    - レスポンスのstateが **PENDING** となっている場合は、VMを要求した状態に移行している最中です
+    - 多くのAPIの実装では仮想マシンのパワーオンとディスクの追加をおこなうためには2回のリクエストが必要です。一方、v3 APIでは両方の操作(厳密には2以上も可能)を1度の **PUT **リクエストで実施することができます。
+    - そのため、v3 APIは劇的に少ないAPIのURL数で様々な要素の変更をPUTリクエストのspec要素の指定で実行できます。 
 
-#. Get the status of your VM
+#. 仮想マシンの状態を取得する
 
-    - Click on the tab for **exercise 3** where you retrieved the status of your VM
-    - Click **Send** to repeat the **GET** to retrieve the latest information about your VM
-    - Once the **state** is COMPLETE, the **status** will reflect the changes made to your VM
+    - 仮想マシンの状態を取得した **演習3** のタブをクリックしてください
+    - **Send** ボタンを再度クリックして、 **GET** メソッドで改めて仮想マシンの状態を取得してください
+    - **state** が COMPLETE になったら, **status** に変更が適用されていることが見受けられるはずです
 
-#. Check it out in the Prism UI
+#. Prismにログインして確認します
 
-    - Open a web browser to https://{{prism_central_ip}}:9440/console/
-    - Enter the Prism **Username** and **Password** displayed in your lab handout to log in
-    - Type the f key or click the search icon to open the search bar on the header
-    - Enter the name of your VM (hint: your Initials)
-    - Click on your VM in the table and click the **Launch Console** button under the table
-    - A window will appear for the CentOS login prompt
+    - ブラウザを開いてPrism Centralにアクセスします。 https://{{prism_central_ip}}:9440/console/
+    - Prism Centralで **Username** と **Password** を入力してログインします
+    - 「f」キーを押すか検索アイコンをクリックして検索バーを表示します
+    - 仮想マシン名を入力します。イニシャルが名前につけられているはずです
+    - テーブルにある仮想マシンをクリックして選択し、テーブル下に表示される **Launch Console** ボタンを押します
+    - CentOSにログインするためのウィンドウが表示されるはずです(電源ONとディスクのアタッチに成功しているということ)
