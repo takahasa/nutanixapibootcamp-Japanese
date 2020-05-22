@@ -1,47 +1,48 @@
 .. _api_image_list:
 
 ----------------------
-API: List of Images
+API: イメージの一覧
 ----------------------
 
-Overview
+概要
 ++++++++
 
-In this exercise you will list the images on the clusters.  Later exercises
-will require the image uuid in the JSON body.  These images are stored in the AHV image service.
+この演習では受講者のかたはクラスターのイメージ(仮想マシンになるテンプレート)の一覧を得ます。
+あとの演習では得られたレスポンスのJSONに含まれるイメージのUUIDが必要となります。
+これらのイメージはAHVのイメージサービスという機能で管理されています。
 
 .. note::
 
-  Estimated time to complete: **5 MINUTES**
+  想定される演習時間: **5 MINUTES**
 
 
 
 Exercise: List the images on the cluster
 +++++++++++++++++++++++++++++++++++++++++++
 
-#. Click + in the main window to create a new tab-window
+#. Postmanの「+」ボタンをクリックして新しいリクエストのタブを作成してください
 
-#. Click the dropdown and select POST
+#. HTTPメソッドをPOSTにしてください
 
-    - v3 standardizes on POST for listing to offer server-side filtering, grouping, and sorting
+    - Nutanix API v3 ではPOSTメソッドを使ってサーバーサイドのフィルタリング、グルーピング、ソートを実施しています 
 
-#. Enter the URL to list images
+#. イメージ一覧を得るためのURLを入力してください
 
     - https://{{prism_central_ip}}:9440/api/nutanix/v3/images/list
 
-#. Configure basic authentication for this API call
+#. リクエストにベーシック認証の設定をします
 
-    - Follow the same steps from the first exercise
-    - v3 conforms to HTTP as a stateless protocol such that each API call is authenticated
+    - 前回までの演習と全く同じ手順で設定してください
+    - v3 API はHTTPをステートレス(状態がない)なプロトコルとして扱います。そのため、認証はAPIの呼び出しごとに毎回おこなわれます
 
-#. Set the media type to application/json
+#. メディアタイプを application/json にしてください
 
-    - Follow the same steps from the first exercise
+    - 具体的な方法は最初の演習にあります
 
-#. Fill out the body
+#. ボディを記述します
 
-    - Click the Body tab
-    - Copy or type an empty dictionary in the json body as seen below
+    - ボディタブをクリックしてください
+    - 以下の空の辞書データをコピーするなり書くなりしてください
 
     .. code-block:: bash
 
@@ -49,14 +50,14 @@ Exercise: List the images on the cluster
 
     .. figure:: images/apimetajson.png
 
-#. Click Send to submit the v3 API call
+#. Sendボタンを押して v3 API を呼び出してください
 
-  - The intent response provides an array of image resources, similar to GET on one entity
-  - Take note of the uuid for the CentOS7 disk image in the metadata section
+  - レスポンスにはアレイ(リスト)形式でイメージの一覧があります
+  - 「CentOS7」というイメージのmetadataにあるUUIDをメモしておいてください
 
     .. figure:: images/centosuuid.png
 
 
-  - Take note of the uuid for the Windows2016 disk image in the metadata section
+  - 「Windows2016」というイメージのmetadataにあるUUIDをメモしておいてください
 
     .. figure:: images/windowsuuid.png

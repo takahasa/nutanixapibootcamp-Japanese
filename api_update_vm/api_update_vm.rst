@@ -1,27 +1,28 @@
 .. _api_update_vm:
 
 ----------------------
-API: Update VM
+API: VMの更新
 ----------------------
 
-Overview
+概要
 ++++++++
 
-In this exercise perfoms two VM updates in a single API call.  You update you VM to associate a disk and perform a power on.
+この演習では仮想マシンの2つの更新を1回のAPI呼び出しで同時に更新をします。
+具体的には先程作成した仮想マシンに仮想ディスクを接続し、電源をONにします。
 
 .. note::
 
-  Estimated time to complete: **20 MINUTES**
+  想定される演習時間: **20 MINUTES**
 
 
 
 
-Exercise: Update your VM
+演習: VMの更新
 ++++++++++++++++++++
 
-#. Click + in the main window to create a new tab-window
+#. Postmanの「+」ボタンを押して新しいリクエストのタブを作成してください
 
-#. Click the dropdown and select PUT
+#. HTTPメソッドで「PUT」を選択してください
 
     - v3 uses PUT to allow the declaration of a spec that describes the new desired final state
 

@@ -1,42 +1,42 @@
 .. _api_vm_status:
 
 ----------------------
-API: VM Status
+API: 仮想マシンのステータス
 ----------------------
 
-Overview
+概要
 ++++++++
 
 .. note::
 
-  Estimated time to complete: **5 MINUTES**
+  予想演習時間: **5 MINUTES**
 
 
-Exercise: Get the status of your VM
+演習: 仮想マシンのステータスを取得する
 ++++++++++++++++++++
 
-#. Click + in the main window to create a new tab-window
+#. Postmanの + ボタンをクリックして、新しいリクエストタブを作成してください
 
-#. Confirm that GET is selected in the dropdown
+#. HTTPメソッドにGETが選択されていることを確認してください
 
-#. Enter the URL to get your VM
+#. 仮想マシンのステータスを得るためにURLを入力してください
 
-    - Start with the URL from the previous exercise: https://{{prism_central_ip}}:9440/api/nutanix/v3/vms
-    - Append /{{uuid}} to the URL, using the uuid from the metadata section noted in the VM creation response from exercise 2
+    - 前回の演習と同じURLから開始されます: https://{{prism_central_ip}}:9440/api/nutanix/v3/vms
+    - URLの後ろに仮想マシンのUUIDを「/{{uuid}}」として加えてください。このUUIDは仮想マシンを作成した際に得られたものです
 
     .. figure:: images/appenduuid.png
 
-#. Configure basic authentication for this API call
+#. リクエストにベーシック認証の設定をします
 
-    - Follow the same steps from the previous exercise
-    - v3 conforms to HTTP as a stateless protocol such that each API call is authenticated
+    - 前回までの演習と全く同じ手順で設定してください
+    - v3 API はHTTPをステートレス(状態がない)なプロトコルとして扱います。そのため、認証はAPIの呼び出しごとに毎回おこなわれます
 
-#. Click Send to submit the v3 API call
+#. Sendボタンを押してAPI
 
-    - The intent response contains two important sections:
-        - The status exposes the current state of the entity
-        - The spec describes the final state desired by the user
-    - The state attribute in the status section allows a user to know if the system has transformed the entity from its current state to the final state
-    - If the state is PENDING instead of COMPLETE, click Send to get the VM again
+    - レスポンスには2つの重要なパートが含まれています:
+        - Status(ステータス)には現在のエンティティ(要素)の状態が含まれています
+        - Spec(スペック)にはユーザーが望む最終的な状態が記載されています
+    - Statusに含まれるState(ステート)には、エンティティが現在の状態から望まれる最終的な状態に遷移できているかが示されています
+    - もしステートが「COMPLETE」ではなく「PENDING」であれば、もういちどSendをクリックして状態を取得してください
 
     .. figure:: images/getstatus.png
