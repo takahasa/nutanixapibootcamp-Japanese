@@ -94,7 +94,7 @@ API: VMの更新
 
 #. Prismにログインして確認します
 
-    - ブラウザを開いてPrism Centralにアクセスします。 https://{{prism_central_ip}}:9440/console/
+    - ブラウザを開いてPrism Centralにアクセスします。 `https://{{prism_central_ip}}:9440/console/`
     - Prism Centralで **Username** と **Password** を入力してログインします
     - 「f」キーを押すか検索アイコンをクリックして検索バーを表示します
     - 仮想マシン名を入力します。イニシャルが名前につけられているはずです
