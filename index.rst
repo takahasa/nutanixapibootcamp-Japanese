@@ -42,34 +42,37 @@
 ---------------
 
 ようこそ Nutanix API Bootcamp へ!
-この演習では Prism Central v3 APIs を使ってもらうことで、NutanixのAPIに慣れてもらいます。
+この演習では Prism Central v3 APIs を使ってもらうことで、NutanixのAPIに慣れる事ができます。
 演習の題材として仮想マシン(VM)のデプロイとアップデートを実施します。
 
 
 準備
 +++++++++++++
 
-- 配られたパスワードをメモしておいてください
-- 下記にある情報にしたがって、リモートマシンに接続してください
-- Prismのイメージサービスを使ってWindowsとLinuxのイメージをアップロードしてください
-- Postmanというツールのアカウントを取得してください
+- 配られたパスワードをメモします。
+- 下記にある情報にしたがって、リモートマシンに接続します。
+- Prismのイメージサービスを使ってWindowsとLinuxのイメージをアップロードします。:
+  - 「WindowsToolsVM.qcow2」(http://10.42.194.11/workshop_staging/WindowsToolsVM.qcow2)
+  - 「Windows2016.qcow2」(http://10.42.194.11/workshop_staging/Windows2016.qcow2)
+  - 「CentOS7.qcow2」(http://10.42.194.11/workshop_staging/CentOS7.qcow2)
+- Postmanというツールのアカウントを取得しておきます。(必須ではありません。)
 
 演習環境について
 +++++++++++++++++++
 
-この演習(Nutanix Workshops)は Nutanix 者の Hosted POC (検証用の環境)を使っておこなわれます。
-参加者が利用するクラスターは必要なイメージ、ネットワーク、仮想マシンなどの設定が事前に準備されているはずです。
+この演習(Nutanix Workshops)は Nutanix社の Hosted POC (検証用の環境)を使って行われます。
+参加者が利用するクラスターは必要なイメージ、ネットワーク、仮想マシンなどの設定が事前に準備されています。
 
 ネットワーク
-...........
+..........
 
-NutanixのHosted POCにあるクラスターは以下のルールに沿って設定されています:
+NutanixのHosted POCにあるクラスターは以下のルールに沿って設定されています。:
 
 - **クラスター名** - POC\ *XYZ*
 - **サブネット** - 10.**21**.\ *XYZ*\ .0
 - **クラスターIP(外部IP)** - 10.**21**.\ *XYZ*\ .37
 
-もしマーケティング用のPOC環境でクラスタが準備されていれば以下となります:
+もしマーケティング用のPOC環境でクラスタが準備されていれば以下となります。:
 
 - **クラスター名** - MKT\ *XYZ*
 - **サブネット** - 10.**20**.\ *XYZ*\ .0
@@ -97,7 +100,7 @@ NutanixのHosted POCにあるクラスターは以下のルールに沿って設
    * - 10.21.\ *XYZ*\ .40
      - **DC** VM IP, NTNXLAB.local ドメインコントローラー(AD)
 
-それぞれのクラスターは仮想マシンに利用できる2つのVLANが設定されています:
+それぞれのクラスターは仮想マシンに利用できる2つのVLANが設定されています。:
 
 .. list-table::
   :widths: 25 25 10 40
@@ -143,7 +146,7 @@ NutanixのHosted POCにあるクラスターは以下のルールに沿って設
      - nutanix
      - *<Cluster Password>*
 
-各クラスターはそれぞれ仮想マシンのドメインコントローラー **DC** を持っており、それは **NTNXLAB.local** というドメインにたいしてAD機能を提供しています。
+各クラスターはそれぞれ仮想マシンのドメインコントローラー **DC** を持っており、 **NTNXLAB.local** というドメインとしてAD機能を提供しています。
 ドメインは以下の Users と Groups を提供しています。:
 
 .. list-table::
@@ -219,9 +222,9 @@ RTP Based Clusters Login to: https://xld-useast1.nutanix.com
 **Nutanix Employees** - Use your **NUTANIXDC** credentials
 **Non-Employees** - Use **Lab Access User** Credentials
 
-クライアントソフトをダウンロードする.
+クライアントソフトをダウンロードします。
 
-ツールを開いて, **Add** で接続を追加する:
+ツールを開いて、 **Add** で接続を追加する:
 
 For PHX:
 
