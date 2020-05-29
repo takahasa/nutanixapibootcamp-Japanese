@@ -9,7 +9,7 @@ API: ゲストVMのカスタマイズ
 
 .. note::
 
-  想定演習時間: **20 MINUTES**
+  想定演習時間: **20 分**
 
 この演習ではWindows VMをNutanix v3 APIを使って作成します。
 APIのボディに「unattend.xml」を設定することで、ゲストカスタマイズ機能を使います。
@@ -21,43 +21,43 @@ APIのボディに「unattend.xml」を設定することで、ゲストカス�
 演習: Windows VMの作成
 ++++++++++++++++++++++++++++++
 
-#. Postmanの「+」ボタンをクリックして新しいリクエストタブを作成します
+#. Postmanの「+」ボタンをクリックして新しいリクエストタブを作成します。
 
     .. figure:: images/newtab.png
 
-#. HTTPメソッドのドロップダウンで POST を選択します
+#. HTTPメソッドのドロップダウンで POST を選択します。
 
-    - v3 API は Restfulな設計で、一般的なHTTPメソッドであるGET, POST, PUT, DELETEなどを使います
+    - v3 API は Restfulな設計で、一般的なHTTPメソッドであるGET, POST, PUT, DELETEなどを使います。
 
     .. figure:: images/postfunction.png
 
-#. 仮想マシンを作成するために以下のURLを入力します
+#. 仮想マシンを作成するために以下のURLを入力します。
 
     - https://{{prism_central_ip}}:9440/api/nutanix/v3/vms
-    - v3 は簡単なセマンティックAPIを提供します
+    - v3 は簡単なセマンティックAPIを提供します。
 
     .. figure:: images/urlcreate.png
 
-#. APIを呼び出すためにベーシック認証の設定をします
+#. APIを呼び出すためにベーシック認証の設定をします。
 
-    - **Authorization** タブをクリックし **Basic Auth** をTypeのドロップダウンから選択します
-    - プリズムのクレデンシャルを入力し **Update Request** をクリックします:
+    - **Authorization** タブをクリックし **Basic Auth** をTypeのドロップダウンから選択します。
+    - プリズムのクレデンシャルを入力し **Update Request** をクリックします。:
         - **Username** - admin
-        - **Password** - 講師より伝えられたPrismのログインパスワード
+        - **Password** - 講師から与えられた“Prism login password”を使ってください。
 
     .. figure:: images/basicauth.png
 
-#. メディアタイプを application/json に設定する
+#. メディアタイプを「JSON」に設定します。
 
-    - Bodyタブをクリックする
-    - ラジオボタンで raw を選択
-    - Text のドロップダウンをクリックしJSON(application/json)を選択
+    - Bodyタブをクリック。
+    - ラジオボタンで raw を選択します。
+    - Text のドロップダウンをクリックしJSONを選択します。
 
     .. figure:: images/jsonmediatype.png
 
-#. ボディを入力する
+#. ボディを入力します。
 
-    - 以下のJSONを入力してください
+    - 以下のJSONをコピーもしくは入力してください。
 
     .. code-block:: bash
 
@@ -168,32 +168,32 @@ APIのボディに「unattend.xml」を設定することで、ゲストカス�
 
 
 
-    上記のボディの何箇所かを修正する必要があります
+    上記のボディの何箇所かを修正する必要があります。
       - VM名の最後にあなたのイニシャルを設定します。上記の <initial> をあなたのイニシャルに変更してください。
-      - サブネットの UUID を受講者のクラスターが持つサブネットのUUIDにします。上記の <subnetuuid> を置き換えてください
-      - ディスクイメージのUUIDをWindowsに変更します。上記の <diskimageuuid> を置き換えてください
+      - サブネットの UUID を受講者のクラスターが持つサブネットのUUIDにします。上記の <subnetuuid> を置き換えてください。
+      - ディスクイメージのUUIDをWindowsに変更します。上記の <diskimageuuid> を置き換えてください。
 
 
-    以下の設定が unattend.xml より適用されます
-      - 新しいユーザー Nutanix を作成し、そのパスワードを Nutanix123# とする
-      - タイムゾーンを PST にする.
-      - システム言語を en-US にする
-      - ホスト名を Calm にする
+    以下の設定が unattend.xml より適用されます。
+      - 新しいユーザー Nutanix を作成し、そのパスワードを Nutanix123# とします。
+      - タイムゾーンを PST にします。
+      - システム言語を en-US にします。
+      - ホスト名を Calm にします。
 
 
-7. Sendボタンを押して v3 API を呼び出してください
+7. Sendボタンを押して v3 API を呼び出してください。
 
-    v3 APIは要求されたリクエストに対するステータスとレスポンスボディを返します
+    v3 APIは要求されたリクエストに対するステータスとレスポンスボディを返します。
 
     .. figure:: images/createresponse.png
 
 
 
-8. Prism UI で確認する
+8. Prism UI で確認します。
 
-    - ウェブブラウザを開いてアクセスする: https://{{prism_central_ip}}:9440/console/
-    - Prismの **Username** と **Password** にラボガイドの値を与えてログイン
-    - f キーを押すか検索アイコンを押して、検索バーを表示する
-    - さきほど作成したVMの名前(イニシャルが含まれる)を与える
-    - テーブルに表示されたVMをクリックし、テーブル下に表示された **Launch Console** ボタンを押す
-    - Windowsのログイン画面が表示されたウィンドウが表示される
+    - ウェブブラウザを開いてアクセスします。: https://{{prism_central_ip}}:9440/console/
+    - Prismの **Username** と **Password** にラボガイドの値を与えてログインします。
+    - f キーを押すか検索アイコンを押して、検索バーを表示します。
+    - さきほど作成したVMの名前(イニシャルが含まれる)を与えます。
+    - テーブルに表示されたVMをクリックし、テーブル下に表示された **Launch Console** ボタンを押します。
+    - Windowsのログイン画面が表示されたウィンドウが表示されます。
